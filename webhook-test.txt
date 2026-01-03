@@ -1,5 +1,46 @@
+Task: Add Loading Spinner to Submit Button
 
-AI Code Review Test - FIXED!
-  Webhook entegrasyonu test ediliyor.
-  Tarih: 3 ocak 2026 - 14.01
-test amaçlıdır
+Implementation:
+
+import { useState } from "react";
+
+export default function SaveProfileButton() {
+  const [loading, setLoading] = useState(false);
+
+  const handleSave = async () => {
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/save-profile");
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+    } catch (error) {
+      console.error("Save profile error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleSave}
+      disabled={loading}
+      style={{
+        backgroundColor: "#4F46E5",
+        color: "#FFFFFF",
+        padding: "8px 16px",
+        borderRadius: "6px",
+        border: "none",
+        cursor: loading ? "not-allowed" : "pointer",
+        display: "flex",
+        alignItems: "center",
+        gap: "8px"
+      }}
+    >
+      {loading && <span className="spinner" />}
+      <span>Save Profile</span>
+    </button>
+  );
+}
