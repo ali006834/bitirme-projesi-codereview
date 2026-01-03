@@ -2,3 +2,4 @@
 AI Code Review Test - FIXED!
   Webhook entegrasyonu test ediliyor.
   Tarih: 31 Aralık 2025 - 22:30
+test amaçlıdır
