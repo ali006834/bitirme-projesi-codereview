@@ -1,6 +1,4 @@
-Task: Add Loading Spinner to Submit Button
 
-Implementation:
 
 import { useState } from "react";
 
