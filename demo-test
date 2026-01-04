@@ -1,0 +1,46 @@
+def calculate_sprint_velocity(tasks, sprint_duration):
+    """
+    Calculate team velocity based on completed tasks
+    
+    Args:
+        tasks: List of task objects with story_points
+        sprint_duration: Duration in days
+    
+    Returns:
+        Average velocity (story points per day)
+    """
+    completed_tasks = [t for t in tasks if t.status == 'completed']
+    
+    total_points = 0
+    for task in completed_tasks:
+        total_points += task.story_points
+    
+    # 🐛 BUG: Division by zero if sprint_duration is 0
+    velocity = total_points / sprint_duration
+    
+    return velocity
+
+
+def assign_task_to_best_developer(task, team_members):
+    """
+    Assign task to developer with matching skills
+    
+    Args:
+        task: Task object with required_skills
+        team_members: List of User objects
+    
+    Returns:
+        Best matching developer
+    """
+    best_match = None
+    highest_score = 0
+    
+    for developer in team_members:
+        # 🐛 BUG: Missing null check for developer.skills
+        matching_skills = len(set(task.required_skills) & set(developer.skills))
+        
+        if matching_skills > highest_score:
+            highest_score = matching_skills
+            best_match = developer
+    
+    return best_match
