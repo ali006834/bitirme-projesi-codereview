@@ -1,0 +1,10 @@
+"""Simple calculator test"""
+
+def add_numbers(a, b):
+    return a + b
+
+def divide(x, y):
+    return x / y
+
+result = divide(10, 0)
+print(result)
