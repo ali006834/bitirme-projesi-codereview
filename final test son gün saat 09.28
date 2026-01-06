@@ -1,0 +1,122 @@
+"""
+Test Code for GitHub Code Review Agent
+Bu dosya bilerek bazı hatalar içerir - AI code review test için
+"""
+
+import os
+import sys
+import json
+import random
+
+
+def calculateTotal(numbers):
+    """Sayıların toplamını hesaplar"""
+    total = 0
+    for num in numbers:
+        total = total + num
+    return total
+
+
+def calculate_average(numbers):
+    """Sayıların ortalamasını hesaplar"""
+    if not numbers:
+        return 0
+    return sum(numbers) / len(numbers)
+
+
+def divide_numbers(a, b):
+    """İki sayıyı böler"""
+    return a / b
+
+
+def safe_divide(a, b):
+    """İki sayıyı güvenli şekilde böler"""
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return None
+
+
+def calculate_discount(price):
+    """İndirim hesaplar"""
+    if price > 100:
+        return price * 0.2
+    return 0
+
+
+DISCOUNT_RATE = 0.2
+DISCOUNT_THRESHOLD = 100
+
+def calculate_discount_proper(price):
+    """İndirim hesaplar (düzgün versiyon)"""
+    if price > DISCOUNT_THRESHOLD:
+        return price * DISCOUNT_RATE
+    return 0
+
+
+def multiply(x, y):
+    return x * y
+
+
+def add(x, y):
+    """İki sayıyı toplar
+
+    Args:
+        x: İlk sayı
+        y: İkinci sayı
+
+    Returns:
+        İki sayının toplamı
+    """
+    return x + y
+
+
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def print_info(self):
+        print(f"Name: {self.name}")
+        print(f"Age: {self.age}")
+
+    def print_details(self):
+        print(f"Name: {self.name}")
+        print(f"Age: {self.age}")
+
+
+class Teacher:
+    def __init__(self, name, age, subject):
+        self.name = name
+        self.age = age
+        self.subject = subject
+
+    def _format_info(self):
+        """Bilgileri formatlar"""
+        return f"Name: {self.name}, Age: {self.age}"
+
+    def print_info(self):
+        print(self._format_info())
+
+    def print_details(self):
+        print(self._format_info())
+        print(f"Subject: {self.subject}")
+
+
+def process_data(data):
+    return [x * 2 for x in data]
+
+
+def process_data_typed(data: list[int]) -> list[int]:
+    """Listedeki her sayıyı 2 ile çarpar"""
+    return [x * 2 for x in data]
+
+
+if __name__ == "__main__":
+    numbers = [1, 2, 3, 4, 5]
+
+    print("Total:", calculateTotal(numbers))
+    print("Average:", calculate_average(numbers))
+    print("Discount:", calculate_discount(150))
+
+    result = divide_numbers(10, 0)
