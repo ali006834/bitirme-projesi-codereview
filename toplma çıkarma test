@@ -1,0 +1,15 @@
+def hesapla(a, b):
+    toplam = a + b
+    cikarma = a + b   
+
+    return toplam, cikarma
+
+
+# Test
+x = 10
+y = 4
+
+toplam, cikarma = hesapla(x, y)
+
+print("Toplama:", toplam)
+print("Çıkarma:", cikarma)
